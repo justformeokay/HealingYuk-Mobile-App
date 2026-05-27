@@ -43,6 +43,7 @@ lib/
 ```
 
 Each feature follows the MVVM/Domain-Driven pattern:
+
 - Domain: Business logic and entities
 - Data: Data sources and repository implementations
 - Presentation: UI screens and providers
@@ -53,71 +54,83 @@ The application integrates with a native PHP backend API at https://api-trip.kar
 
 ### Authentication Endpoints
 
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| POST | /auth/login | User login |
-| POST | /auth/register | User registration |
-| POST | /auth/refresh | Refresh JWT token |
+
+| Method | Endpoint       | Purpose           |
+| ------ | -------------- | ----------------- |
+| POST   | /auth/login    | User login        |
+| POST   | /auth/register | User registration |
+| POST   | /auth/refresh  | Refresh JWT token |
 
 ### Trip Endpoints
 
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| GET | /trips | Get all trips (paginated) |
-| GET | /trips/{id} | Get trip details |
-| GET | /trips/featured | Get featured trips |
-| GET | /trips/search | Search trips with filters |
-| GET | /categories | Get trip categories |
-| GET | /destinations | Get all destinations |
+
+| Method | Endpoint        | Purpose                   |
+| ------ | --------------- | ------------------------- |
+| GET    | /trips          | Get all trips (paginated) |
+| GET    | /trips/{id}     | Get trip details          |
+| GET    | /trips/featured | Get featured trips        |
+| GET    | /trips/search   | Search trips with filters |
+| GET    | /categories     | Get trip categories       |
+| GET    | /destinations   | Get all destinations      |
 
 ### Booking Endpoints
 
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| GET | /bookings | Get user bookings |
-| POST | /bookings | Create new booking |
-| DELETE | /bookings/{id} | Cancel booking |
+
+| Method | Endpoint       | Purpose            |
+| ------ | -------------- | ------------------ |
+| GET    | /bookings      | Get user bookings  |
+| POST   | /bookings      | Create new booking |
+| DELETE | /bookings/{id} | Cancel booking     |
 
 ### User Endpoints
 
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| GET | /me | Get current user profile |
-| PUT | /me | Update user profile |
+
+| Method | Endpoint | Purpose                  |
+| ------ | -------- | ------------------------ |
+| GET    | /me      | Get current user profile |
+| PUT    | /me      | Update user profile      |
 
 ## Dependencies
 
 ### State Management
+
 - provider (^6.1.2): ChangeNotifier-based state management for reactive UI updates
 
 ### HTTP & Networking
+
 - dio (^5.4.3+1): Robust HTTP client with interceptor support for request/response handling
 - Custom ApiClient wrapper for centralized API management
 - AuthInterceptor for automatic JWT token refresh
 - LoggingInterceptor for debugging
 
 ### Dependency Injection
+
 - get_it (^7.7.0): Service locator pattern for dependency injection throughout the app
 
 ### Local Storage
+
 - shared_preferences (^2.2.3): Key-value storage for app preferences
 - flutter_secure_storage (^9.2.2): Secure storage for sensitive data (tokens, credentials)
 
 ### Navigation
+
 - go_router (^14.2.7): Modern declarative routing with nested navigation and deep linking support
 
 ### UI & Styling
+
 - google_fonts (^6.2.1): Google Fonts integration (using Poppins)
 - icons_plus (^5.0.0): Comprehensive icon library
 - cached_network_image (^3.3.1): Network image caching and lazy loading
 - shimmer (^3.0.0): Shimmer loading placeholders for smooth UX
 
 ### Utilities
+
 - dartz (^0.10.1): Functional programming utilities (Either type for error handling)
 - equatable (^2.0.5): Simplified equality comparison for model objects
 - intl (^0.19.0): Internationalization and date/time formatting
 
 ### Development
+
 - flutter_lints (^4.0.0): Recommended linter rules for Flutter
 - flutter_launcher_icons (^0.13.1): Automated app icon generation for all platform densities
 
@@ -126,22 +139,27 @@ The application integrates with a native PHP backend API at https://api-trip.kar
 ### Core Module
 
 Constants (core/constants/)
+
 - app_colors.dart: Primary, secondary, and semantic colors
 - app_spacing.dart: Consistent spacing scale
 - app_strings.dart: Localized and static strings
 
 Network (core/network/)
+
 - api_client.dart: Centralized HTTP client using Dio
 - interceptors/: Custom request/response interceptors
 
 Services (core/services/)
+
 - service_locator.dart: GetIt configuration and dependency registration
 - session_service.dart: User session and token management
 
 Router (core/router/)
+
 - app_router.dart: GoRouter configuration with authentication guards
 
 Widgets (core/widgets/)
+
 - primary_button.dart: Reusable primary button
 - custom_text_field.dart: Enhanced text input
 - app_dialog.dart: Customizable dialog widget
@@ -151,6 +169,7 @@ Widgets (core/widgets/)
 ### Features
 
 Each feature is organized as:
+
 - domain/entities/: Data models and business logic contracts
 - domain/usecases/: Feature-specific use cases
 - data/datasources/: API and local data sources
@@ -171,22 +190,26 @@ Each feature is organized as:
 ### Steps
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd HealingYuk/mobile
 ```
 
 2. Install dependencies:
+
 ```bash
 flutter pub get
 ```
 
 3. Generate app launcher icons:
+
 ```bash
 flutter pub run flutter_launcher_icons
 ```
 
 4. Run code generation (if using build_runner):
+
 ```bash
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
@@ -196,11 +219,13 @@ flutter pub run build_runner build --delete-conflicting-outputs
 ### Development
 
 Run on default device:
+
 ```bash
 flutter run
 ```
 
 Run on specific device:
+
 ```bash
 flutter run -d <device-id>
 ```
@@ -208,11 +233,13 @@ flutter run -d <device-id>
 ### Release Build
 
 Build for Android:
+
 ```bash
 flutter build apk --release
 ```
 
 Build for iOS:
+
 ```bash
 flutter build ios --release
 ```
@@ -251,6 +278,7 @@ The app uses Provider (ChangeNotifier) for state management:
 ## Build & Distribution
 
 The app includes automated launcher icon generation supporting:
+
 - All Android densities (hdpi, mdpi, xhdpi, xxhdpi, xxxhdpi)
 - All iOS sizes (from 29x29 to 1024x1024)
 - Adaptive icons for Android 8.0+
@@ -266,11 +294,13 @@ The app includes automated launcher icon generation supporting:
 ## Testing
 
 Run all tests:
+
 ```bash
 flutter test
 ```
 
 Generate coverage report:
+
 ```bash
 flutter test --coverage
 ```
@@ -280,16 +310,17 @@ flutter test --coverage
 Common Issues
 
 1. API Connection Error
+
    - Verify backend server is running
    - Check internet connectivity
    - Review API base URL in api_client.dart
-
 2. Authentication Failing
+
    - Ensure credentials are correct
    - Check token expiration
    - Review SessionService configuration
-
 3. UI Layout Issues
+
    - Clear flutter build cache: flutter clean
    - Rebuild: flutter pub get && flutter run
 
@@ -298,7 +329,7 @@ Common Issues
 Developed by PT Karya Developer Indonesia
 
 - Website: https://karyadeveloperindonesia.com
-- Email: support@karyadeveloperindonesia.com
+- Email: info@karyadeveloperindonesia.com
 
 ## Version
 
@@ -311,7 +342,8 @@ Proprietary. All rights reserved by PT Karya Developer Indonesia.
 ## Support
 
 For technical support or bug reports, please contact:
-- Email: support@karyadeveloperindonesia.com
+
+- Email: info@karyadeveloperindonesia.com
 
 ---
 
